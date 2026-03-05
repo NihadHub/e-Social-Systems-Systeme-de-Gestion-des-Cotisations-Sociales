@@ -24,7 +24,7 @@ public class Employeur {
 
     public Employeur(){}
 
-    public Employeur(String raisonSociale) {
+    public Employeur(String raisonSociale,String secteurActivite) {
         this.raisonSociale = raisonSociale;
         this.secteurActivite = secteurActivite;
     }

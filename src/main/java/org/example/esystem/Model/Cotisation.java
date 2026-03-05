@@ -27,10 +27,11 @@ public class Cotisation {
 
     public Cotisation(){}
 
-    public Cotisation(double cotisationSalariale, double cotisationPatronale, double salaireBrut, Assure assure) {
+    public Cotisation(double cotisationSalariale, double cotisationPatronale, double salaireBrut, Declaration declaration, Assure assure) {
         this.cotisationSalariale = cotisationSalariale;
         this.cotisationPatronale = cotisationPatronale;
         this.salaireBrut = salaireBrut;
+        this.declaration = declaration;
         this.assure = assure;
     }
 

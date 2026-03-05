@@ -20,7 +20,7 @@ public class AssureDAO {
           }
      }
 
-     public Assure findById(int id){
+     public Assure findById(long id){
          try{
               return em.find(Assure.class, id);
          }   finally {

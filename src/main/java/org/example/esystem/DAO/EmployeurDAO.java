@@ -29,6 +29,14 @@ public class EmployeurDAO {
         }
     }
 
+    public Employeur findById(int id) {
+        EntityManager em = JPAUtil.getEntityManager();
+        try {
+            return em.find(Employeur.class, id);
+        } finally {
+            em.close();
+        }
+    }
     public void Update(Employeur emp){
         try {
             transaction.begin();
