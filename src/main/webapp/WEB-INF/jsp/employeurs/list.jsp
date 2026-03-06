@@ -1,5 +1,4 @@
-<%@ taglib prefix="c" uri="jakarta.tags.core" %>
-<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %><%@ page contentType="text/html;charset=UTF-8" %>
 <!DOCTYPE html>
 <html>
 <head>

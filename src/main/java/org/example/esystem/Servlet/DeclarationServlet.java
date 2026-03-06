@@ -21,12 +21,12 @@ public class DeclarationServlet extends HttpServlet{
     switch (action){
         case"/add":
             req.setAttribute("employeurs", employeurDAO.findAll());
-            req.getRequestDispatcher("/jsp/declarations/add.jsp").forward(req,res);
+            req.getRequestDispatcher("/WEB-INF/jsp/declarations/list.jsp").forward(req,res);
             break;
         default:
             req.setAttribute("declarations",
                     declarationDAO.findAll());
-            req.getRequestDispatcher("/jsp/declarations/list.jsp")
+            req.getRequestDispatcher("/WEB-INF/jsp/declarations/list.jsp")
                     .forward(req, res);
             break;
     }
@@ -40,7 +40,7 @@ public class DeclarationServlet extends HttpServlet{
     String result=declarationService.creerDeclaration(emp, mois,annee);
     req.setAttribute("message", result);
     req.setAttribute("declarations", declarationDAO.findAll());
-    req.getRequestDispatcher("/jsp/declarations/list.jsp").forward(req,res);
+    req.getRequestDispatcher("/WEB-INF/jsp/declarations/list.jsp").forward(req,res);
 }
 }
 

@@ -21,26 +21,26 @@ public class AssureServlet extends HttpServlet{
             case"/add":
                 List<Employeur>emps = employeurDAO.findAll();
                 req.setAttribute("employeurs",emps);
-                req.getRequestDispatcher("/jsp/assures/add.jsp").forward(req,res);
+                req.getRequestDispatcher("/WEB-INF/jsp/assures/add.jsp").forward(req,res);
                 break;
 
             case"/edit":
                 int id=Integer.parseInt(req.getParameter("id"));
                 Assure assure = assureDAO.findById(id);
                 req.setAttribute("assure",assure);
-                req.getRequestDispatcher("/jsp/assures/edit.jsp").forward(req,res);
+                req.getRequestDispatcher("/WEB-INF/jsp/assures/edit.jsp").forward(req,res);
                 break;
             case"/byEmployeur":
                 int empId=Integer.parseInt(req.getParameter("employeurId"));
                 List<Assure> assures=assureDAO.findEmployeur(empId);
                 req.setAttribute("assures",assures);
-                req.getRequestDispatcher("/jsp/assures/list.jsp").forward(req,res);
+                req.getRequestDispatcher("/WEB-INF/jsp/assures/list.jsp").forward(req,res);
                 break;
 
             default:
                 List<Assure> all= assureDAO.findAll();
                 req.setAttribute("assures",all);
-                req.getRequestDispatcher("/jsp/assures/list.jsp").forward(req,res);
+                req.getRequestDispatcher("/WEB-INF/jsp/assures/list.jsp").forward(req,res);
                 break;
         }
     }

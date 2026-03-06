@@ -24,7 +24,7 @@ public class DroitsServlet extends HttpServlet {
             req.setAttribute("droits", droits);
         }
         req.setAttribute("assures", assureDAO.findAll());
-        req.getRequestDispatcher("/jsp/droits/consulter.jsp")
+        req.getRequestDispatcher("/WEB-INF/jsp/droits/consulter.jsp")
                 .forward(req, resp);
     }
 }

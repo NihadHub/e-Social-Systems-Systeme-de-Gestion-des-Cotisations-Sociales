@@ -1,7 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
-<%@ taglib prefix="c" uri="jakarta.tags.core" %><!DOCTYPE html>
-<html>
-<head>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %><head>
     <title> Consultation des droits sociaux</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
 </head>

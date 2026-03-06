@@ -1,7 +1,6 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="jakarta.tags.core" %><!DOCTYPE html>
-<html>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %><html>
 <head>
     <title>Nouvelle declaration</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">

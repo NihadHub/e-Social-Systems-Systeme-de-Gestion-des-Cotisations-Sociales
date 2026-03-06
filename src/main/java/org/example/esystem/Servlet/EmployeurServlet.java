@@ -16,19 +16,19 @@ public class EmployeurServlet extends HttpServlet{
     if (action == null) action = "/list";
     switch (action) {
         case "/add":
-            req.getRequestDispatcher("/jsp/employeurs/add.jsp").forward(req, res);
+            req.getRequestDispatcher("/WEB-INF/jsp/employeurs/add.jsp").forward(req, res);
             break;
         case "/detail":
             int id = Integer.parseInt(req.getParameter("id"));
             Employeur emp = employeurDAO.findById(id);
             req.setAttribute("employeur", emp);
-            req.getRequestDispatcher("/jsp/employeurs/detail.jsp").forward(req, res);
+            req.getRequestDispatcher("/WEB-INF/jsp/employeurs/detail.jsp").forward(req, res);
             break;
 
         default:
             List<Employeur> list = employeurDAO.findAll();
             req.setAttribute("employeurs", list);
-            req.getRequestDispatcher("/jsp/employeurs/list.jsp").forward(req, res);
+            req.getRequestDispatcher("/WEB-INF/jsp/employeurs/list.jsp").forward(req, res);
             break;
 
     }
