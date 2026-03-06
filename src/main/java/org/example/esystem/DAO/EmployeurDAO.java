@@ -23,8 +23,11 @@ public class EmployeurDAO {
 
     public List<Employeur> findAll(){
         try {
-            return em.createQuery("SELECT e FROM Employeur e", Employeur.class).getResultList();
-        }finally {
+            return em.createQuery(
+                    "SELECT DISTINCT e FROM Employeur e LEFT JOIN FETCH e.declarations",
+                    Employeur.class
+            ).getResultList();
+        } finally {
             em.close();
         }
     }

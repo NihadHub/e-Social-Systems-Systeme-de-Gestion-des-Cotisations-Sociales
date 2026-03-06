@@ -36,8 +36,8 @@ public class DeclarationServlet extends HttpServlet{
     int empId= Integer.parseInt(req.getParameter("employeurId"));
     int mois= Integer.parseInt(req.getParameter("mois"));
     int annee= Integer.parseInt(req.getParameter("annee"));
-    Employeur e = employeurDAO.findById(empId);
-    String result=declarationService.creerDeclaration(e, mois,annee);
+    Employeur emp = employeurDAO.findById(empId);
+    String result=declarationService.creerDeclaration(emp, mois,annee);
     req.setAttribute("message", result);
     req.setAttribute("declarations", declarationDAO.findAll());
     req.getRequestDispatcher("/jsp/declarations/list.jsp").forward(req,res);
