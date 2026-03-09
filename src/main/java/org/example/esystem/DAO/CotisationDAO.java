@@ -5,10 +5,10 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 import java.util.List;
 public class CotisationDAO {
-    EntityManager em = JPAUtil.getEntityManager();
-    EntityTransaction transaction=em.getTransaction();
 
     public void ajouterCotisation(Cotisation cotisation){
+        EntityManager em = JPAUtil.getEntityManager();
+        EntityTransaction transaction=em.getTransaction();
         try {
             transaction.begin();
             em.persist(cotisation);
@@ -22,6 +22,7 @@ public class CotisationDAO {
     }
 
     public List<Cotisation> findByAssure(int idAssure){
+        EntityManager em = JPAUtil.getEntityManager();
         try {
             return em.createQuery("SELECT c FROM Cotisation c WHERE c.assure.id = :aId", Cotisation.class).setParameter("aId",idAssure).getResultList();
         }finally {
@@ -30,6 +31,7 @@ public class CotisationDAO {
     }
 
     public List<Cotisation> findByDeclaration(int declarationId){
+        EntityManager em = JPAUtil.getEntityManager();
         try {
             return em.createQuery("SELECT c FROM Cotisation c WHERE c.declaration.id =:dId", Cotisation.class).setParameter("dId",declarationId).getResultList();
         }finally {
@@ -38,6 +40,7 @@ public class CotisationDAO {
     }
 
     public double getTotalByEmployeur(int employeurId){
+        EntityManager em = JPAUtil.getEntityManager();
         try {
             Double Total = em.createQuery(
                     "SELECT SUM(c.cotisationSalariale+ c.cotisationPatronale )FROM Cotisation c WHERE c.declaration.employeur.id=:empId", Double.class

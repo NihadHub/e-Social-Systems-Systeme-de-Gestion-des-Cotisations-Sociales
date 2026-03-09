@@ -5,10 +5,12 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 import java.util.List;
 public class AssureDAO {
-    EntityManager em = JPAUtil.getEntityManager();
-    EntityTransaction transaction = em.getTransaction();
+
      public void ajouterAssure(Assure assure) {
-          try {
+         EntityManager em = JPAUtil.getEntityManager();
+         EntityTransaction transaction = em.getTransaction();
+
+         try {
                transaction.begin();
                em.persist(assure);
                transaction.commit();
@@ -21,6 +23,7 @@ public class AssureDAO {
      }
 
      public Assure findById(long id){
+         EntityManager em = JPAUtil.getEntityManager();
          try{
               return em.find(Assure.class, id);
          }   finally {
@@ -29,6 +32,7 @@ public class AssureDAO {
      }
 
      public List<Assure> findAll(){
+         EntityManager em = JPAUtil.getEntityManager();
           try {
                return em.createQuery("SELECT a FROM Assure a", Assure.class).getResultList();
           }   finally {
@@ -37,6 +41,7 @@ public class AssureDAO {
      }
 
      public List<Assure> findEmployeur(int employeurId){
+         EntityManager em = JPAUtil.getEntityManager();
           try{
                return em.createQuery(
                        "SELECT a FROM Assure a WHERE a.employeur.id=:empId", Assure.class)
@@ -47,7 +52,10 @@ public class AssureDAO {
      }
 
      public void UpdateSalary(int id, double nouveauSalaire){
-          try {
+         EntityManager em = JPAUtil.getEntityManager();
+         EntityTransaction transaction = em.getTransaction();
+
+         try {
                transaction.begin();
                Assure assure = em.find(Assure.class, id);
                if(assure != null){

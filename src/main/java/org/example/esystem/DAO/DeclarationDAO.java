@@ -6,10 +6,10 @@ import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.NoResultException;
 import java.util.List;
 public class DeclarationDAO {
-    EntityManager em = JPAUtil.getEntityManager();
-    EntityTransaction transaction= em.getTransaction();
 
     public void ajouterDeclaration(Declaration declaration){
+        EntityManager em = JPAUtil.getEntityManager();
+        EntityTransaction transaction=em.getTransaction();
         try {
             transaction.begin();
             em.persist(declaration);
@@ -23,6 +23,7 @@ public class DeclarationDAO {
     }
 
     public Declaration findById(int id){
+        EntityManager em = JPAUtil.getEntityManager();
         try {
             return em.find(Declaration.class, id);
         }finally {
@@ -31,6 +32,7 @@ public class DeclarationDAO {
     }
 
     public List<Declaration> findAll(){
+        EntityManager em = JPAUtil.getEntityManager();
         try {
             return em.createQuery("SELECT d FROM Declaration d", Declaration.class).getResultList();
         }finally {
@@ -39,6 +41,7 @@ public class DeclarationDAO {
     }
 
     public boolean exister(int EmployeurId, int mois, int anne){
+        EntityManager em = JPAUtil.getEntityManager();
         try {
             Declaration declaration = em.createQuery(
                             "SELECT d FROM Declaration d WHERE d.employeur.id =:empId AND d.mois =:mois AND d.annee = :annee", Declaration.class)
@@ -52,6 +55,7 @@ public class DeclarationDAO {
         }
 
     public List<Declaration> findByEmployeur(int employeurId){
+        EntityManager em = JPAUtil.getEntityManager();
         try {
             return em.createQuery("SELECT d FROM Declaration  d where d.employeur.id=:empId", Declaration.class).setParameter("empId",employeurId).getResultList();
         } finally {

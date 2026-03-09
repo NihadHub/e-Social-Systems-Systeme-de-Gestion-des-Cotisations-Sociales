@@ -5,10 +5,10 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 import java.util.List;
 public class EmployeurDAO {
-    EntityManager em = JPAUtil.getEntityManager();
-    EntityTransaction transaction = em.getTransaction();
 
     public void ajouterEmployeur(Employeur emp){
+        EntityManager em = JPAUtil.getEntityManager();
+        EntityTransaction transaction=em.getTransaction();
         try{
             transaction.begin();
             em.persist(emp);
@@ -22,6 +22,7 @@ public class EmployeurDAO {
     }
 
     public List<Employeur> findAll(){
+        EntityManager em = JPAUtil.getEntityManager();
         try {
             return em.createQuery(
                     "SELECT DISTINCT e FROM Employeur e LEFT JOIN FETCH e.declarations",
@@ -33,6 +34,7 @@ public class EmployeurDAO {
     }
 
     public Employeur findById(int id) {
+
         EntityManager em = JPAUtil.getEntityManager();
         try {
             return em.find(Employeur.class, id);
@@ -41,6 +43,8 @@ public class EmployeurDAO {
         }
     }
     public void Update(Employeur emp){
+        EntityManager em = JPAUtil.getEntityManager();
+        EntityTransaction transaction=em.getTransaction();
         try {
             transaction.begin();
             em.merge(emp);
@@ -54,6 +58,8 @@ public class EmployeurDAO {
     }
 
     public void Supprimer(int id){
+        EntityManager em = JPAUtil.getEntityManager();
+        EntityTransaction transaction=em.getTransaction();
         try {
             transaction.begin();
             Employeur emp=em.find(Employeur.class,id);

@@ -15,24 +15,24 @@ public class DeclarationServlet extends HttpServlet{
     DeclarationService declarationService=new DeclarationService();
 
 @Override
-    public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException,IOException{
+    protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException,IOException{
     String action = req.getPathInfo();
     if(action==null) action="/list";
     switch (action){
         case"/add":
             req.setAttribute("employeurs", employeurDAO.findAll());
-            req.getRequestDispatcher("/WEB-INF/jsp/declarations/list.jsp").forward(req,res);
+            req.getRequestDispatcher("/jsp/declarations/add.jsp").forward(req,res);
             break;
         default:
             req.setAttribute("declarations",
                     declarationDAO.findAll());
-            req.getRequestDispatcher("/WEB-INF/jsp/declarations/list.jsp")
+            req.getRequestDispatcher("/jsp/declarations/list.jsp")
                     .forward(req, res);
             break;
     }
 }
 @Override
-    public void doPost (HttpServletRequest req, HttpServletResponse res) throws ServletException,IOException{
+    protected void doPost (HttpServletRequest req, HttpServletResponse res) throws ServletException,IOException{
     int empId= Integer.parseInt(req.getParameter("employeurId"));
     int mois= Integer.parseInt(req.getParameter("mois"));
     int annee= Integer.parseInt(req.getParameter("annee"));
@@ -40,7 +40,7 @@ public class DeclarationServlet extends HttpServlet{
     String result=declarationService.creerDeclaration(emp, mois,annee);
     req.setAttribute("message", result);
     req.setAttribute("declarations", declarationDAO.findAll());
-    req.getRequestDispatcher("/WEB-INF/jsp/declarations/list.jsp").forward(req,res);
+    req.getRequestDispatcher("/jsp/declarations/list.jsp").forward(req,res);
 }
 }
 

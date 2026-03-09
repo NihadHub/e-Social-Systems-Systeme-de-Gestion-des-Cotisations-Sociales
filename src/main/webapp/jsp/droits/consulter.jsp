@@ -24,7 +24,7 @@
             <h2> ${assure.nom}</h2>
             <table>
                 <tr>
-                    <td>Nombres de moid declarés:</td>
+                    <td>Nombres de mois declarés:</td>
                     <td><strong>${droits.moisDeclares}</strong></td>
                 </tr>
                 <tr>

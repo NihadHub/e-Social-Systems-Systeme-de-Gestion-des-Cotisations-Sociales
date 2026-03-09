@@ -14,38 +14,38 @@ public class AssureServlet extends HttpServlet{
     private EmployeurDAO employeurDAO = new EmployeurDAO();
 
     @Override
-    public void doGet(HttpServletRequest req, HttpServletResponse res)throws ServletException, IOException{
+    protected void doGet(HttpServletRequest req, HttpServletResponse res)throws ServletException, IOException{
         String action= req.getPathInfo();
         if(action==null)action="/list";
         switch (action){
             case"/add":
                 List<Employeur>emps = employeurDAO.findAll();
                 req.setAttribute("employeurs",emps);
-                req.getRequestDispatcher("/WEB-INF/jsp/assures/add.jsp").forward(req,res);
+                req.getRequestDispatcher("/jsp/assures/add.jsp").forward(req,res);
                 break;
 
             case"/edit":
                 int id=Integer.parseInt(req.getParameter("id"));
                 Assure assure = assureDAO.findById(id);
                 req.setAttribute("assure",assure);
-                req.getRequestDispatcher("/WEB-INF/jsp/assures/edit.jsp").forward(req,res);
+                req.getRequestDispatcher("/jsp/assures/edit.jsp").forward(req,res);
                 break;
             case"/byEmployeur":
                 int empId=Integer.parseInt(req.getParameter("employeurId"));
                 List<Assure> assures=assureDAO.findEmployeur(empId);
                 req.setAttribute("assures",assures);
-                req.getRequestDispatcher("/WEB-INF/jsp/assures/list.jsp").forward(req,res);
+                req.getRequestDispatcher("/jsp/assures/list.jsp").forward(req,res);
                 break;
 
             default:
                 List<Assure> all= assureDAO.findAll();
                 req.setAttribute("assures",all);
-                req.getRequestDispatcher("/WEB-INF/jsp/assures/list.jsp").forward(req,res);
+                req.getRequestDispatcher("/jsp/assures/list.jsp").forward(req,res);
                 break;
         }
     }
 @Override
-    public void doPost(HttpServletRequest req,HttpServletResponse res) throws ServletException,IOException{
+    protected void doPost(HttpServletRequest req,HttpServletResponse res) throws ServletException,IOException{
         req.setCharacterEncoding("UTF-8");
         String action = req.getPathInfo();
     if ("/updateSalaire".equals(action)) {

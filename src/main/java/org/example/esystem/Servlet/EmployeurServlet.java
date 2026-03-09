@@ -11,24 +11,24 @@ import java.util.List;
 public class EmployeurServlet extends HttpServlet{
     private EmployeurDAO employeurDAO = new EmployeurDAO();
 @Override
-    public void doGet(HttpServletRequest req, HttpServletResponse res)throws ServletException,IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse res)throws ServletException,IOException {
     String action = req.getPathInfo();
     if (action == null) action = "/list";
     switch (action) {
         case "/add":
-            req.getRequestDispatcher("/WEB-INF/jsp/employeurs/add.jsp").forward(req, res);
+            req.getRequestDispatcher("/jsp/employeurs/add.jsp").forward(req, res);
             break;
         case "/detail":
             int id = Integer.parseInt(req.getParameter("id"));
             Employeur emp = employeurDAO.findById(id);
             req.setAttribute("employeur", emp);
-            req.getRequestDispatcher("/WEB-INF/jsp/employeurs/detail.jsp").forward(req, res);
+            req.getRequestDispatcher("/jsp/employeurs/detail.jsp").forward(req, res);
             break;
 
         default:
             List<Employeur> list = employeurDAO.findAll();
             req.setAttribute("employeurs", list);
-            req.getRequestDispatcher("/WEB-INF/jsp/employeurs/list.jsp").forward(req, res);
+            req.getRequestDispatcher("/jsp/employeurs/list.jsp").forward(req, res);
             break;
 
     }

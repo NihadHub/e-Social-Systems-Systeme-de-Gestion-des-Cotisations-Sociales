@@ -7,7 +7,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 import java.io.IOException;
 import java.util.Map;
-@WebServlet("/droits/*")
+@WebServlet("/droits")
 public class DroitsServlet extends HttpServlet {
     private DroitsService droitsService = new DroitsService();
     private AssureDAO assureDAO = new AssureDAO();
@@ -24,7 +24,7 @@ public class DroitsServlet extends HttpServlet {
             req.setAttribute("droits", droits);
         }
         req.setAttribute("assures", assureDAO.findAll());
-        req.getRequestDispatcher("/WEB-INF/jsp/droits/consulter.jsp")
+        req.getRequestDispatcher("/jsp/droits/consulter.jsp")
                 .forward(req, resp);
     }
 }

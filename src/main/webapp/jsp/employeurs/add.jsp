@@ -2,7 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Ajoutet un employeur </title>
+    <title>Ajouter un employeur </title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
 
 </head>
